@@ -48,7 +48,7 @@ export const actions: Actions = {
 		} catch (err) {
 			console.log('Error:', err);
 			// Provide the error message to the error function for better debugging
-			return error(500, `Something went wrong while creating your account: ${err.message || err}`);
+			return error(500, `Something went wrong while creating your account: ${err}`);
 		}
 	}
 };
