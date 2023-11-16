@@ -43,11 +43,11 @@ export const actions: Actions = {
 			console.log('register response:', response);
 			try {
 				await _loginUser(form.data.email, form.data.password);
-				throw redirect(303, '/home');
 			} catch (err) {
 				console.log('Error:', err);
 				throw error(500, 'Something went wrong while logging in.');
 			}
+			throw redirect(303, '/home');
 		} catch (err) {
 			console.log('Error:', err);
 			throw error(500, 'Something went wrong while creating your account.');
