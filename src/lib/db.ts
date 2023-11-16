@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase(import.meta.env.VITE_PB_PROD_URL);
+export const pb = new PocketBase(import.meta.env.VITE_PB_URL);
 interface newUserFormData {
 	first_name: string;
 	last_name: string;
