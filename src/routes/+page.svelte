@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-
 	import LoginForm from '$lib/custom-components/LoginForm.svelte';
 	import SignUpForm from '$lib/custom-components/SignUpForm.svelte';
 	import { fade } from 'svelte/transition';
 	export let data: PageData;
 
-	let needSignUp = false;
+	let needSignUp = true;
 
 	function toggleSignUp() {
 		needSignUp = !needSignUp;

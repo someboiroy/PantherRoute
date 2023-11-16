@@ -1,77 +1,70 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import FeatureCards from '$lib/custom-components/FeatureCards.svelte';
-	import { _logoutUser } from '$lib/db';
-	export let data: PageData;
-	export const user = data.user;
+	import * as Card from '$lib/components/ui/card';
+	import { Separator } from '$lib/components/ui/separator';
 </script>
 
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/pEAP2wvvHs2
--->
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/tqp1hDrJzbc
--->
+<div class="flex-grow p-4 m-2">
+	<a href="/today" class="p-4">
+		<Card.Root class="hover:bg-violet-400/20">
+			<Card.Header>
+				<Card.Title>See Today's Schedule</Card.Title>
+				<Card.Description>
+					Explore today's shuttle schedule and stay ahead of your plans. Know precisely where and
+					when to catch your ride.
+				</Card.Description>
+			</Card.Header>
+		</Card.Root>
+	</a>
+	<a href="/incident-reporting" class="p-4">
+		<Card.Root class="hover:bg-purple-200">
+			<Card.Header>
+				<Card.Title>Incident Reporting</Card.Title>
+				<Card.Description
+					>Your safety is our priority. Report any incidents swiftly to help us ensure a secure
+					travel experience for all.
+				</Card.Description>
+			</Card.Header>
+		</Card.Root>
+	</a>
+	<a href="/home" class="p-4 cursor-default">
+		<Card.Root class="bg-muted">
+			<Card.Header>
+				<Card.Title
+					>Live Map <span class="text-xs italic text-purple-400/50">
+						(Coming Soon)
+					</span></Card.Title
+				>
+				<Card.Description>
+					Track the shuttle in real-time. Never miss an update and make your travel smoother.
+				</Card.Description>
+			</Card.Header>
+		</Card.Root>
+	</a>
+	<a href="/home" class="p-4 cursor-default">
+		<Card.Root class="bg-muted">
+			<Card.Header>
+				<Card.Title
+					>Seat Reservations <span class="text-xs italic text-purple-400/50">
+						(Coming Soon)
+					</span></Card.Title
+				>
+				<Card.Description
+					>Guarantee your spot on the shuttle. Travel with peace of mind, knowing there's a seat
+					with your name on it.
+				</Card.Description>
+			</Card.Header>
+		</Card.Root>
+	</a>
 
-<div class="flex flex-col min-h-screen bg-gray-100">
-	<header class="flex items-center justify-between px-4 py-2 text-white bg-primary sm:px-6 sm:py-4">
-		<div class="flex items-center space-x-2 sm:space-x-4">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="w-6 h-6 sm:w-8 sm:h-8"
-			>
-				<path d="M8 6v6" />
-				<path d="M15 6v6" />
-				<path d="M2 12h19.6" />
-				<path
-					d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"
-				/>
-				<circle cx="7" cy="18" r="2" />
-				<path d="M9 18h5" />
-				<circle cx="16" cy="18" r="2" />
-			</svg>
-			<span class="text-sm font-semibold sm:text-lg">PantherRoute</span>
-		</div>
-		<button aria-label="Menu" class="sm:hidden">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="w-6 h-6 text-white"
-			>
-				<line x1="4" x2="20" y1="12" y2="12" />
-				<line x1="4" x2="20" y1="6" y2="6" />
-				<line x1="4" x2="20" y1="18" y2="18" />
-			</svg>
-		</button>
-		<nav class="items-center hidden space-x-4 sm:flex">
-			<a class="text-sm font-medium sm:text-base" href="#"> Home </a>
-			<a class="text-sm font-medium sm:text-base" href="#"> Schedule </a>
-			<a class="text-sm font-medium sm:text-base" href="#"> Routes </a>
-			<a class="text-sm font-medium sm:text-base" href="#"> Fares </a>
-			<a class="text-sm font-medium sm:text-base" href="#"> Contact </a>
-			<form action="/logout" method="POST">
-				<Button class="text-sm font-medium bg-red-500 sm:text-base" type="submit">Logout</Button>
-			</form>
-		</nav>
-	</header>
-	<main class="" />
-	<FeatureCards />
+	<Separator class="my-4" />
+
+	<p class="text-sm font-normal">
+		Navigate PVAMU with ease: Get the latest shuttle schedules, report incidents quickly, and
+		anticipate new features for a smoother campus commute. Your journey, simplified.
+		<br />
+
+		<span class="inline-block mt-2 text-xs font-normal text-gray-400">
+			From Team Cyborg$ with <span class="text-red-500">❤</span>
+		</span>
+	</p>
 </div>

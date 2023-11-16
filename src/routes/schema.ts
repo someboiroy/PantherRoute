@@ -44,6 +44,15 @@ const registerFormSchema = z
 		path: ['passwordConfirm']
 	});
 
-export { loginFormSchema, registerFormSchema };
+const incidentFormSchema = z.object({
+	first_name: z.string(),
+	last_name: z.string(),
+	email: z.string().email(),
+	pantherID: z.string(),
+	report: z.string().min(1, { message: 'Your report cannot be empty.' })
+});
+
+export { loginFormSchema, registerFormSchema, incidentFormSchema };
 export type LoginFormSchema = typeof loginFormSchema;
 export type RegisterFormSchema = typeof registerFormSchema;
+export type IncidentFormSchema = typeof incidentFormSchema;
