@@ -29,7 +29,7 @@ export const actions: Actions = {
 			console.log('Error:', err);
 			throw error(500, 'Something went wrong while logging in.');
 		}
-		throw redirect(303, '/home');
+		throw redirect(307, '/home');
 	},
 	register: async (event) => {
 		const form = await superValidate(event, registerFormSchema);
@@ -41,14 +41,16 @@ export const actions: Actions = {
 		try {
 			const response = await _createNewUser(form.data);
 			console.log('register response:', response);
-			// Assuming _loginUser sets some session or cookie for logged-in state.
-			await _loginUser(form.data.email, form.data.password);
-			// Instead of throwing redirect, return it
-			throw redirect(303, '/home');
+			try {
+				await _loginUser(form.data.email, form.data.password);
+			} catch (err) {
+				console.log('Error:', err);
+				throw error(500, 'Something went wrong while logging in.');
+			}
+			throw redirect(307, '/home');
 		} catch (err) {
 			console.log('Error:', err);
-			// Provide the error message to the error function for better debugging
-			return error(500, `Something went wrong while creating your account: ${err.message || err}`);
+			throw error(500, 'Something went wrong while creating your account.');
 		}
 	}
 };
