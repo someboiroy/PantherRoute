@@ -5,12 +5,10 @@ import { loginFormSchema, registerFormSchema } from './schema';
 import { _createNewUser, _loginUser } from '$lib/db';
 
 export const load: PageServerLoad = ({ locals }) => {
-	if (locals.pb.authStore.isValid) {
-		throw redirect(303, '/home');
-	}
 	return {
 		loginForm: superValidate(loginFormSchema),
-		registerForm: superValidate(registerFormSchema)
+		registerForm: superValidate(registerFormSchema),
+		isLoggedIn: locals.pb.authStore.isValid ? true : false
 	};
 };
 
