@@ -6,7 +6,7 @@
 </script>
 
 <div class="p-6 mt-2 rounded-md shadow-sm bg-secondary">
-	<Form.Root method="POST" action="?/register" {form} schema={registerFormSchema} let:config>
+	<Form.Root method="POST" action="/register" {form} schema={registerFormSchema} let:config>
 		<Form.Field {config} name="first_name">
 			<Form.Item>
 				<Form.Label>First Name</Form.Label>

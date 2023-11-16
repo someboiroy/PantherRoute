@@ -6,7 +6,7 @@
 </script>
 
 <div class="p-6 mt-2 rounded-md shadow-sm bg-secondary">
-	<Form.Root method="POST" action="?/login" {form} schema={loginFormSchema} let:config>
+	<Form.Root method="POST" action="/login" {form} schema={loginFormSchema} let:config>
 		<Form.Field {config} name="email">
 			<Form.Item>
 				<Form.Label>Email</Form.Label>
