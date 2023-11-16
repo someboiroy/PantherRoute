@@ -41,16 +41,14 @@ export const actions: Actions = {
 		try {
 			const response = await _createNewUser(form.data);
 			console.log('register response:', response);
-			try {
-				await _loginUser(form.data.email, form.data.password);
-			} catch (err) {
-				console.log('Error:', err);
-				throw error(500, 'Something went wrong while logging in.');
-			}
+			// Assuming _loginUser sets some session or cookie for logged-in state.
+			await _loginUser(form.data.email, form.data.password);
+			// Instead of throwing redirect, return it
 			throw redirect(303, '/home');
 		} catch (err) {
 			console.log('Error:', err);
-			throw error(500, 'Something went wrong while creating your account.');
+			// Provide the error message to the error function for better debugging
+			return error(500, `Something went wrong while creating your account: ${err.message || err}`);
 		}
 	}
 };
